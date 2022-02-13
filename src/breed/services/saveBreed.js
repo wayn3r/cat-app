@@ -12,11 +12,8 @@ export const saveBreed = async name => {
         },
     })
 
-    if (!request.ok) {
-        const response = await request.json()
-        throw new Error(JSON.parse(response))
+    return {
+        ok: request.ok,
+        data: await request.json(),
     }
-
-    const breed = await request.json()
-    return breed
 }

@@ -39,7 +39,7 @@ export const startSaveCat = cat => {
     return async dispatch => {
         const { ok, data } = await saveCat(cat)
         if (!ok) {
-            return dispatch(saveCatAction(null, data.error || data.message))
+            return dispatch(saveCatAction(null, data.errors || data.message))
         }
         dispatch(saveCatAction(data))
     }
@@ -48,7 +48,7 @@ export const startRemoveCat = id => {
     return async dispatch => {
         const { ok, data } = await deleteCat(id)
         if (!ok) {
-            return dispatch(removeCat(null, data.error || data.message))
+            return dispatch(removeCat(null, data.errors || data.message))
         }
         dispatch(removeCat(data.id))
     }

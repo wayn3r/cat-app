@@ -21,22 +21,24 @@ export const breedReducer = (state = initial, action) => {
             }
         }
         case types.ADD_BREED: {
-            const { breed } = payload
-            if (!breed.id || !breed.name) return state
+            const { breed, error } = payload
+            if (error) return { ...state, error, loading: false }
             return {
                 ...state,
                 breeds: [breed, ...state.breeds],
+                loading: false,
             }
         }
         case types.REMOVE_BREED: {
-            const { id } = payload
-            if (!id) return state
+            const { id, error } = payload
+            if (error) return { ...state, error, loading: false }
             return {
                 ...state,
                 breeds: state.breeds.filter(breed => breed.id !== id),
+                loading: false,
             }
         }
-        case types.LOADING_BREEDS: {
+        case types.LOADING: {
             return {
                 ...state,
                 loading: Boolean(payload),
@@ -51,5 +53,5 @@ export const types = {
     GET_BREED_BY_NAME: 'GET BREED BY NAME',
     ADD_BREED: 'ADD BREED',
     REMOVE_BREED: 'REMOVE BREED',
-    LOADING_BREEDS: '[START/STOP] LOADING BREEDS FROM API',
+    LOADING: '[START/STOP] LOADING BREED',
 }

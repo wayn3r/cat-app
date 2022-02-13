@@ -40,6 +40,8 @@ export const catReducer = (state = initial, action) => {
                 ...state,
                 cats: [cat, ...state.cats.filter(c => c.id !== cat.id)],
                 cat,
+                error: false,
+                loading: false,
             }
         }
         case types.REMOVE_CAT: {
@@ -52,6 +54,8 @@ export const catReducer = (state = initial, action) => {
                 cats: state.cats.filter(c => c.id !== id),
                 cat: state.cat.id === id ? initial.cat : state.cat,
                 removed: id,
+                error: false,
+                loading: false,
             }
         }
         case types.REMOVE_SELECTED_CAT: {

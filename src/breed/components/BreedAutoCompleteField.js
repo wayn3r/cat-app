@@ -4,14 +4,17 @@ import { BreedCard } from './BreedCard'
 export const BreedAutoCompleteField = ({ value, name, onChange }) => {
     const isId = typeof value === 'number'
     const { breeds, loading, error, add } = useBreeds(isId ? '' : value)
-    const canAdd = breeds.length < 1 && !loading && !error
-    const handleAddNewBreed = () => add(value)
-    const { name: breedName } = breeds.find(b => b.id === parseInt(value)) || { name: value }
+    const breed = breeds.find(b => isId && b.id === value)
+    const breedName = breed ? breed.name : value
+    const canAdd = !breed && !loading && breedName !== ''
+
+    const handleAddNewBreed = () => add(value) && handleCardClick('')
     const handleInputChange = e => {
         const name = e.target.value
+        console.log({ name, breeds })
         const breed = breeds.find(b => b.name === name)
-        e.target.value ??= breed.id
-        onChange?.(e)
+        const id = breed ? breed.id : e.target.value
+        handleCardClick(id)
     }
     const handleCardClick = id => {
         onChange?.({ target: { name, value: id } })
@@ -20,7 +23,11 @@ export const BreedAutoCompleteField = ({ value, name, onChange }) => {
         <label>
             Breed
             <input type='text' value={breedName} name={name} onChange={handleInputChange} />
-            {canAdd && <button onClick={handleAddNewBreed}>Add</button>}
+            {canAdd && (
+                <button type='button' onClick={handleAddNewBreed}>
+                    Add
+                </button>
+            )}
             {error && <span>{error}</span>}
             {loading && <span>Loading...</span>}
             <section>

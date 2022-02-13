@@ -1,8 +1,6 @@
 import { useEffect, useCallback } from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import { addBreed, startGetBreedByName, startRemoveBreed } from 'breed/actions/breedActions'
-import { saveBreed } from 'breed/services/saveBreed'
+import { useSelector, useDispatch } from 'react-redux'
+import { startAddBreed, startGetBreedByName, startRemoveBreed } from 'breed/actions/breedActions'
 
 export const useBreeds = (breedName = '') => {
     const dispatch = useDispatch()
@@ -10,13 +8,8 @@ export const useBreeds = (breedName = '') => {
     useEffect(() => {
         dispatch(startGetBreedByName(breedName))
     }, [breedName])
-    const add = useCallback(async name => {
-        const breed = await saveBreed(name)
-        dispatch(addBreed(breed))
-    }, [])
-    const remove = useCallback(async id => {
-        dispatch(startRemoveBreed(id))
-    }, [])
+    const add = useCallback(name => dispatch(startAddBreed(name)), [])
+    const remove = useCallback(id => dispatch(startRemoveBreed(id)), [])
     return {
         loading,
         error,
