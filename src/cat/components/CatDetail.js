@@ -14,9 +14,8 @@ export const CatDetail = () => {
     if (loading || cat === undefined) return 'Loading...'
     if (cat === null) return <CatNotFound id={id} />
 
-    const { name, description, latitude, longitude, breed = '' } = cat
+    const { name, description, latitude, longitude, breed } = cat
     const handleDelete = () => remove(id)
-
     return (
         <div className='cat-detail-page'>
             <h1 className='cat-detail-page__title'>
@@ -31,7 +30,7 @@ export const CatDetail = () => {
             >
                 <div className='cat-detail-page__info'>
                     <h3>Description</h3>
-                    <span className='cat-detail-page__breed'>{breed}</span>
+                    <span className='cat-detail-page__breed'>{breed?.name}</span>
                     <p className='cat-detail-page__description'>{description}</p>
                     <ul className='cat-detail-page__location'>
                         <li>
@@ -43,9 +42,13 @@ export const CatDetail = () => {
                     </ul>
                 </div>
                 <div className='cat-detail-page__edit-form'>
-                    <CatForm defaultCat={cat} onSubmit={toggleShowForm}/>
+                    <CatForm defaultCat={cat} />
                 </div>
-                <Link to='/' className='link cat-detail-page__goback-link' onClick={clearSelectedCat}>
+                <Link
+                    to='/'
+                    className='link cat-detail-page__goback-link'
+                    onClick={clearSelectedCat}
+                >
                     &larr; Go back
                 </Link>
                 <button className='cat-detail-page__edit-button button' onClick={toggleShowForm}>
