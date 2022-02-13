@@ -1,0 +1,21 @@
+.cat-card {
+    display: grid;
+    grid-template-columns: max-content 1fr min-content;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    background-color: white;
+    // border: 1px rgba($secondary, 0.6) solid;
+    box-shadow: 0.25rem 0.1rem 0.5rem rgba($secondary, 0.3);
+    border-radius: 5px;
+    padding: 0.5rem;
+    &__name {
+        color: $primary;
+    }
+    &__description {
+        color: $secondary;
+    }
+    &__action {
+        color: $terciary;
+    }
+}

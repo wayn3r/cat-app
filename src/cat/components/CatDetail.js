@@ -27,7 +27,7 @@ export const CatDetail = () => {
                 <li>Cat name: {name}</li>
             </ul>
             <p>{description}</p>
-            <Link to='/' onClick={clearSelectedCat}>
+            <Link to='/' className='link' onClick={clearSelectedCat}>
                 &larr; Go back
             </Link>
             <LocationMap latitude={latitude} longitude={longitude} />

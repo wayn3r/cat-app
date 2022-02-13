@@ -6,11 +6,13 @@ export const CatPage = () => {
     const { cats } = useCats({ request: true })
     const noCats = !Boolean(cats.length)
     return (
-        <div>
-            <h1>Cats</h1>
-            <Link to='/add'>Add Cat</Link>
+        <div className='cat-page'>
+            <h1 className='cat-page__title'>Cats</h1>
+            <Link className='link cat-page__add-cat' to='/add'>
+                Add Cat
+            </Link>
             <hr />
-            {noCats && <span>There are no cats yet</span>}
+            {noCats && <span className='cat-page__not-found-message'>There are no cats</span>}
             {cats.map(({ id, name, description }) => (
                 <CatCard key={id} id={id} name={name} description={description} />
             ))}

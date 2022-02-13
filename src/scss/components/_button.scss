@@ -1,0 +1,13 @@
+.button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: rgba($primary, 0.7);
+    color: white;
+    border-radius: 10px;
+    transition: 200ms background-color linear;
+    &:hover,
+    &:active {
+        background-color: $primary;
+    }
+}

@@ -20,42 +20,48 @@ export const CatForm = ({ defaultCat = initial, onSubmit }) => {
         onSubmit?.(e)
     }
     return (
-        <form onSubmit={handleSubmit}>
-            {error.name && <span>{error.name}</span>}
-            <label>
+        <form className='cat-form' onSubmit={handleSubmit}>
+            <label className='cat-form__group cat-form__group--name'>
                 Name
                 <input type='text' value={name} name='name' onChange={handleInputChange} />
+                <span>{error.name}</span>
             </label>
-            {error.breedId && <span>{error.breedId}</span>}
-            <BreedAutoCompleteField value={breedId} name='breedId' onChange={handleInputChange} />
-            {error.description && <span>{error.description}</span>}
-            <label>
+            <BreedAutoCompleteField
+                className='cat-form__group cat-form__group--breed'
+                value={breedId}
+                name='breedId'
+                onChange={handleInputChange}
+                errorMessage={error.breedId}
+            />
+            <label className='cat-form__group cat-form__group--description'>
                 Description
-                <textarea value={description} name='description' onChange={handleInputChange} />
+                <textarea
+                    wrap='physical'
+                    value={description}
+                    name='description'
+                    onChange={handleInputChange}
+                />
+                <span>{error.description}</span>
             </label>
-            <div>
-                {error.latitude && <span>{error.latitude}</span>}
-                <label>
-                    Latitude
-                    <input
-                        type='text'
-                        value={latitude}
-                        name='latitude'
-                        onChange={handleInputChange}
-                    />
-                </label>
-                {error.longitude && <span>{error.longitude}</span>}
-                <label>
-                    Longitude
-                    <input
-                        type='text'
-                        value={longitude}
-                        name='longitude'
-                        onChange={handleInputChange}
-                    />
-                </label>
-            </div>
-            <button type='submit'>Save</button>
+            <label className='cat-form__group cat-form__group--latitude'>
+                Latitude
+                <input type='text' value={latitude} name='latitude' onChange={handleInputChange} />
+                <span>{error.latitude}</span>
+            </label>
+            <label className='cat-form__group cat-form__group--longitude'>
+                Longitude
+                <input
+                    type='text'
+                    value={longitude}
+                    name='longitude'
+                    onChange={handleInputChange}
+                />
+                <span>{error.longitude}</span>
+            </label>
+            
+            <button className='button cat-form__submit' type='submit'>
+                Save
+            </button>
         </form>
     )
 }

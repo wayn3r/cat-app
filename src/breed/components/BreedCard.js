@@ -9,10 +9,10 @@ export const BreedCard = ({ id, name, onClick }) => {
     }
     return (
         <div className='breed-card'>
-            <button type='button' onClick={handleSelectClick}>
+            <button className='link breed-card__breed' type='button' onClick={handleSelectClick}>
                 {name}
             </button>
-            <button type='button' onClick={handleDeleteClick}>
+            <button className='link breed-card__delete' type='button' onClick={handleDeleteClick}>
                 &times;
             </button>
         </div>

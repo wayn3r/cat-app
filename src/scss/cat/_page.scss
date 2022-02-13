@@ -1,0 +1,10 @@
+.page {
+    display: grid;
+    min-height: 100vh;
+    min-width: 100vw;
+    padding: 5rem 15rem;
+    align-content: start;
+    grid-template-rows: min-content;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}

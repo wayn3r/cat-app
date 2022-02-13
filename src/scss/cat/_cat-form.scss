@@ -1,0 +1,50 @@
+.cat-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1.5rem;
+    &__group {
+        display: grid;
+        grid-template-rows: min-content;
+        color: $terciary;
+        font-weight: 500;
+        span {
+            color: $danger;
+            font-size: 0.7rem;
+            min-height: 0.8rem;
+            font-weight: 400;
+        }
+        input,
+        textarea {
+            resize: none;
+            outline: none;
+            border: none;
+            border-bottom: 2px rgba($primary, 0.7) solid;
+            transition: 200ms border-bottom linear;
+            &:focus {
+                border-bottom: 2px $primary solid;
+            }
+            padding: 0.5rem 0.1rem;
+        }
+
+        &--name {
+            grid-column: 1 / -1;
+            grid-row: 1 / 2;
+        }
+        &--description {
+            grid-column: 2 / -1;
+            grid-row: 2 / -2;
+            grid-template-rows: min-content 1fr min-content;
+        }
+    }
+
+    &__submit {
+        grid-column: 2 / -1;
+        grid-row: -2 / -1;
+        justify-self: end;
+        align-self: end;
+        width: 50%;
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}

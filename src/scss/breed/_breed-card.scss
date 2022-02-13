@@ -1,0 +1,11 @@
+.breed-card {
+    display: grid;
+    grid-template-columns: min-content 0.1fr;
+    justify-content: space-between;
+    &__delete {
+        color: $danger;
+    }
+    &__breed {
+        color: $primary;
+    }
+}

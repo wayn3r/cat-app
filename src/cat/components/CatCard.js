@@ -5,7 +5,7 @@ export const CatCard = ({ id, name, description }) => {
         <div className='cat-card'>
             <span className='cat-card__name'>{name}</span>
             <span className='cat-card__description'>{description}</span>
-            <Link className='cat-card__action' to={`cat/${id}`}>
+            <Link className='link cat-card__action' to={`cat/${id}`}>
                 Details
             </Link>
         </div>

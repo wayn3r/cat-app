@@ -10,11 +10,13 @@ export const NewCatPage = () => {
         if (cat?.id) navigate('/cat/' + cat.id)
     }, [cat])
     return (
-        <div>
-            Add a new cat
+        <div className='new-cat-page'>
+            <h1 className='new-cat-page__title'>Add a new cat</h1>
             <hr />
             <CatForm />
-            <Link to='/'>&larr; Go back</Link>
+            <Link className='link new-cat-page__goback-link' to='/'>
+                &larr; Go back
+            </Link>
         </div>
     )
 }
