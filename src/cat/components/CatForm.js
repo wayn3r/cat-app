@@ -58,7 +58,7 @@ export const CatForm = ({ defaultCat = initial, onSubmit }) => {
                 />
                 <span>{error.longitude}</span>
             </label>
-            
+
             <button className='button cat-form__submit' type='submit'>
                 Save
             </button>
